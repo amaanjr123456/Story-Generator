@@ -1,4 +1,5 @@
 const storyBox = document.getElementById("story-box");
+const nameInput = document.getElementById("nameInput");
 
 const persons = [
   "Shaji Mon", "Raju Ettan", "Kochumol", "Lalu", "Jameela Teacher",
@@ -22,22 +23,27 @@ function randomFrom(arr) {
 }
 
 function generateStory() {
-  const person = randomFrom(persons);
+  const userName = nameInput.value.trim();
+  const person = userName !== "" ? userName : randomFrom(persons);
   const place = randomFrom(places);
   const item = randomFrom(items);
 
   const story = `
-Oru divasam, ${person} oru puthiya mission eduthu.
+Oru divasam, ${person} enthayalum fastest aavanam ennu theerumanichu.
 
-"Enikku ithu vendi aanu janmichathu!" ennu vilichu, avar ${item} kayyil eduthu.
+"Ente peru Speed ${person} alle!" ennu paranju avan kayyil vechu puthiya ${item}.
 
-Pakshe instructions vayichilla 😅
+Pakshe oru prashnam undayirunnu – instruction onnum vayichilla!
 
-Instead of flying forward, ${person} pinnekk ottichu, crash cheythu oru ${place} il!
+${item} on cheytha samayam, ${person} munottu pokan vendi irunnu…
+pakshe avan pinnekk pokki, banana thallu vechulla cartil ottichu!
 
-Moonu mashanmar yoga cheyyunna samayam avide irunnu. Avarkku chappal edukkan time kittiyilla.
+Moonu yoga cheyyunna mashanmar thirichu valanju, chappal edukki otti.
 
-Ippo aarum "${item}" ennu paranjal, mashmarum odikkariyum. ${person} tea kadailekku maranju poyi!`;
+Ippo aarum "${item}" ennu paranjal, ${place}-ile ella mashmarum coconut treeinte pinnilekku odi nilkkum.
+
+${person}? Avan enthayalum tea kadaile benchinu mukalil irikkum, newspaper vayikkunna pole face...
+`;
 
   storyBox.innerHTML = `<p>${story}</p>`;
 }
